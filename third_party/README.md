@@ -1,0 +1,1 @@
+This directory contains source code not created by MOTU.  Each sub-directory contains a LICENSE file covering source(s) inside the respective sub-directories.

@@ -1,0 +1,474 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FF053D7E1725A386005BC6E9 /* gmock-gtest-all.cc in Sources */ = {isa = PBXBuildFile; fileRef = FF053D7D1725A386005BC6E9 /* gmock-gtest-all.cc */; };
+		FFB35F73171DAC54004F20CF /* AudioUnitUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 217C11C5153638E700454CB2 /* AudioUnitUtils.cpp */; };
+		FFB35F74171DAC54004F20CF /* CPPAutoReleasePool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 217C13461536617A00454CB2 /* CPPAutoReleasePool.mm */; };
+		FFB35F75171DAC54004F20CF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21F2F5530A1C0217002862AB /* main.cpp */; };
+		FFB35F76171DAC54004F20CF /* AUTortureTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21F2F54C0A1C0217002862AB /* AUTortureTest.cpp */; };
+		FFB35F77171DAC54004F20CF /* AUValExcptList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21F2F5550A1C0217002862AB /* AUValExcptList.cpp */; };
+		FFB35F78171DAC54004F20CF /* FakeNew.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 215507231548B5820026F994 /* FakeNew.cpp */; };
+		FFB35F7A171DAC79004F20CF /* System.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F2F55C0A1C02AB002862AB /* System.framework */; };
+		FFB35F7B171DAC79004F20CF /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		FFB35F7C171DAC79004F20CF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F2F5700A1C02C5002862AB /* AudioToolbox.framework */; };
+		FFB35F7D171DAC79004F20CF /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F2F5710A1C02C5002862AB /* AudioUnit.framework */; };
+		FFB35F7E171DAC7C004F20CF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 217C13C4153666FF00454CB2 /* Cocoa.framework */; };
+		FFB35F7F171DAC7C004F20CF /* ExceptionHandling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 217C13CF1536671C00454CB2 /* ExceptionHandling.framework */; };
+		FFB35F80171DAC7C004F20CF /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218691291548C00F00A9BFE4 /* CoreServices.framework */; };
+		FFB35F81171DAC7C004F20CF /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2186912E1548C01C00A9BFE4 /* CoreAudio.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FFB35F65171DAC16004F20CF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		215507231548B5820026F994 /* FakeNew.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FakeNew.cpp; sourceTree = SOURCE_ROOT; };
+		217C11C5153638E700454CB2 /* AudioUnitUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AudioUnitUtils.cpp; path = AUUtils/AudioUnitUtils.cpp; sourceTree = SOURCE_ROOT; };
+		217C11C6153638E700454CB2 /* AudioUnitUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioUnitUtils.h; path = AUUtils/AudioUnitUtils.h; sourceTree = SOURCE_ROOT; };
+		217C1294153648C000454CB2 /* ArraySize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArraySize.h; path = AUUtils/ArraySize.h; sourceTree = SOURCE_ROOT; };
+		217C1298153648E500454CB2 /* sorted_vector_map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sorted_vector_map.h; path = AUUtils/sorted_vector_map.h; sourceTree = SOURCE_ROOT; };
+		217C13461536617A00454CB2 /* CPPAutoReleasePool.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CPPAutoReleasePool.mm; path = AUUtils/CPPAutoReleasePool.mm; sourceTree = SOURCE_ROOT; };
+		217C13A51536655A00454CB2 /* AUValStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AUValStatus.h; path = AUUtils/AUValStatus.h; sourceTree = SOURCE_ROOT; };
+		217C13C4153666FF00454CB2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		217C13CF1536671C00454CB2 /* ExceptionHandling.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExceptionHandling.framework; path = System/Library/Frameworks/ExceptionHandling.framework; sourceTree = SDKROOT; };
+		218691291548C00F00A9BFE4 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		2186912E1548C01C00A9BFE4 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		21F2F54C0A1C0217002862AB /* AUTortureTest.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = AUTortureTest.cpp; sourceTree = SOURCE_ROOT; };
+		21F2F5520A1C0217002862AB /* AUValExcptList.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = AUValExcptList.h; sourceTree = SOURCE_ROOT; };
+		21F2F5530A1C0217002862AB /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
+		21F2F5540A1C0217002862AB /* AUTortureTest.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = AUTortureTest.h; sourceTree = SOURCE_ROOT; };
+		21F2F5550A1C0217002862AB /* AUValExcptList.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = AUValExcptList.cpp; sourceTree = SOURCE_ROOT; };
+		21F2F55C0A1C02AB002862AB /* System.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = System.framework; path = System/Library/Frameworks/System.framework; sourceTree = SDKROOT; };
+		21F2F5700A1C02C5002862AB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		21F2F5710A1C02C5002862AB /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		FF053D7C171F4C6A005BC6E9 /* scoped_cftyperef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scoped_cftyperef.h; sourceTree = "<group>"; };
+		FF053D7D1725A386005BC6E9 /* gmock-gtest-all.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "gmock-gtest-all.cc"; path = "third_party/gmock-gtest/gmock-gtest-all.cc"; sourceTree = SOURCE_ROOT; };
+		FF053D801725A3BE005BC6E9 /* gmock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gmock.h; sourceTree = "<group>"; };
+		FF053D821725A3BE005BC6E9 /* gtest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gtest.h; sourceTree = "<group>"; };
+		FFB35F61171DA68C004F20CF /* MotuTargetFlags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MotuTargetFlags.h; sourceTree = "<group>"; };
+		FFB35F62171DA68C004F20CF /* optional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = optional.h; sourceTree = "<group>"; };
+		FFB35F67171DAC16004F20CF /* auexamin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = auexamin; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFB35F79171DAC68004F20CF /* CPPAutoReleasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPPAutoReleasePool.h; path = ../AUUtils/CPPAutoReleasePool.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FFB35F64171DAC16004F20CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFB35F7A171DAC79004F20CF /* System.framework in Frameworks */,
+				FFB35F7B171DAC79004F20CF /* Carbon.framework in Frameworks */,
+				FFB35F7C171DAC79004F20CF /* AudioToolbox.framework in Frameworks */,
+				FFB35F7E171DAC7C004F20CF /* Cocoa.framework in Frameworks */,
+				FFB35F7F171DAC7C004F20CF /* ExceptionHandling.framework in Frameworks */,
+				FFB35F80171DAC7C004F20CF /* CoreServices.framework in Frameworks */,
+				FFB35F81171DAC7C004F20CF /* CoreAudio.framework in Frameworks */,
+				FFB35F7D171DAC79004F20CF /* AudioUnit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* TrimPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				08FB77ADFE841716C02AAC07 /* Source */,
+				089C1671FE841209C02AAC07 /* External Frameworks and Libraries */,
+				19C28FB4FE9D528D11CA2CBB /* Products */,
+				217C13C4153666FF00454CB2 /* Cocoa.framework */,
+				217C13CF1536671C00454CB2 /* ExceptionHandling.framework */,
+				218691291548C00F00A9BFE4 /* CoreServices.framework */,
+				2186912E1548C01C00A9BFE4 /* CoreAudio.framework */,
+			);
+			name = TrimPlugin;
+			sourceTree = "<group>";
+		};
+		089C1671FE841209C02AAC07 /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				21F2F55C0A1C02AB002862AB /* System.framework */,
+				08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */,
+				21F2F5700A1C02C5002862AB /* AudioToolbox.framework */,
+				21F2F5710A1C02C5002862AB /* AudioUnit.framework */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		08FB77ADFE841716C02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				FFF5CBCE1864E5CA008F9562 /* chromium */,
+				FF053D7F1725A3BE005BC6E9 /* gmock */,
+				FF053D811725A3BE005BC6E9 /* gtest */,
+				FFB35F60171DA68C004F20CF /* Utils */,
+				21F2F5530A1C0217002862AB /* main.cpp */,
+				21F2F54C0A1C0217002862AB /* AUTortureTest.cpp */,
+				21F2F5540A1C0217002862AB /* AUTortureTest.h */,
+				21F2F5520A1C0217002862AB /* AUValExcptList.h */,
+				21F2F5550A1C0217002862AB /* AUValExcptList.cpp */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		19C28FB4FE9D528D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FFB35F67171DAC16004F20CF /* auexamin */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FF053D7F1725A3BE005BC6E9 /* gmock */ = {
+			isa = PBXGroup;
+			children = (
+				FF053D801725A3BE005BC6E9 /* gmock.h */,
+				FF053D7D1725A386005BC6E9 /* gmock-gtest-all.cc */,
+			);
+			name = gmock;
+			path = "third_party/gmock-gtest/gmock";
+			sourceTree = "<group>";
+		};
+		FF053D811725A3BE005BC6E9 /* gtest */ = {
+			isa = PBXGroup;
+			children = (
+				FF053D821725A3BE005BC6E9 /* gtest.h */,
+			);
+			name = gtest;
+			path = "third_party/gmock-gtest/gtest";
+			sourceTree = "<group>";
+		};
+		FFB35F60171DA68C004F20CF /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FFB35F61171DA68C004F20CF /* MotuTargetFlags.h */,
+				FFB35F62171DA68C004F20CF /* optional.h */,
+				FFB35F79171DAC68004F20CF /* CPPAutoReleasePool.h */,
+				217C13A51536655A00454CB2 /* AUValStatus.h */,
+				217C1294153648C000454CB2 /* ArraySize.h */,
+				217C1298153648E500454CB2 /* sorted_vector_map.h */,
+				217C11C5153638E700454CB2 /* AudioUnitUtils.cpp */,
+				217C11C6153638E700454CB2 /* AudioUnitUtils.h */,
+				217C13461536617A00454CB2 /* CPPAutoReleasePool.mm */,
+				215507231548B5820026F994 /* FakeNew.cpp */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		FFF5CBCE1864E5CA008F9562 /* chromium */ = {
+			isa = PBXGroup;
+			children = (
+				FF053D7C171F4C6A005BC6E9 /* scoped_cftyperef.h */,
+			);
+			name = chromium;
+			path = third_party/chromium;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FFB35F66171DAC16004F20CF /* auexamin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFB35F6D171DAC16004F20CF /* Build configuration list for PBXNativeTarget "auexamin" */;
+			buildPhases = (
+				FFB35F63171DAC16004F20CF /* Sources */,
+				FFB35F64171DAC16004F20CF /* Frameworks */,
+				FFB35F65171DAC16004F20CF /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = auexamin;
+			productName = auexamin;
+			productReference = FFB35F67171DAC16004F20CF /* auexamin */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+			};
+			buildConfigurationList = 4FADC23708B4156C00ABE55E /* Build configuration list for PBXProject "AUValidator" */;
+			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 089C166AFE841209C02AAC07 /* TrimPlugin */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FFB35F66171DAC16004F20CF /* auexamin */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FFB35F63171DAC16004F20CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFB35F73171DAC54004F20CF /* AudioUnitUtils.cpp in Sources */,
+				FFB35F74171DAC54004F20CF /* CPPAutoReleasePool.mm in Sources */,
+				FFB35F75171DAC54004F20CF /* main.cpp in Sources */,
+				FFB35F76171DAC54004F20CF /* AUTortureTest.cpp in Sources */,
+				FFB35F77171DAC54004F20CF /* AUValExcptList.cpp in Sources */,
+				FFB35F78171DAC54004F20CF /* FakeNew.cpp in Sources */,
+				FF053D7E1725A386005BC6E9 /* gmock-gtest-all.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		4FADC23808B4156C00ABE55E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				GCC_VERSION = "";
+				HEADER_SEARCH_PATHS = "third_party/gmock-gtest/";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = "";
+			};
+			name = Debug;
+		};
+		F6C4E784097C56C300C8DAD4 /* DebugOpt */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				GCC_VERSION = "";
+				HEADER_SEARCH_PATHS = "third_party/gmock-gtest/";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = "";
+			};
+			name = DebugOpt;
+		};
+		F6C4E785097C56C300C8DAD4 /* Alpha */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				GCC_VERSION = "";
+				HEADER_SEARCH_PATHS = "third_party/gmock-gtest/";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = "";
+			};
+			name = Alpha;
+		};
+		F6C4E788097C575D00C8DAD4 /* Beta */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				GCC_VERSION = "";
+				HEADER_SEARCH_PATHS = "third_party/gmock-gtest/";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = "";
+			};
+			name = Beta;
+		};
+		F6C4E789097C575D00C8DAD4 /* Ship */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				GCC_VERSION = "";
+				HEADER_SEARCH_PATHS = "third_party/gmock-gtest/";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = "";
+			};
+			name = Ship;
+		};
+		FFB35F6E171DAC16004F20CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"GTEST_USE_OWN_TR1_TUPLE=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FFB35F6F171DAC16004F20CF /* DebugOpt */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"GTEST_USE_OWN_TR1_TUPLE=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = DebugOpt;
+		};
+		FFB35F70171DAC16004F20CF /* Alpha */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "GTEST_USE_OWN_TR1_TUPLE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Alpha;
+		};
+		FFB35F71171DAC16004F20CF /* Beta */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "GTEST_USE_OWN_TR1_TUPLE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Beta;
+		};
+		FFB35F72171DAC16004F20CF /* Ship */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "GTEST_USE_OWN_TR1_TUPLE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Ship;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4FADC23708B4156C00ABE55E /* Build configuration list for PBXProject "AUValidator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FADC23808B4156C00ABE55E /* Debug */,
+				F6C4E784097C56C300C8DAD4 /* DebugOpt */,
+				F6C4E785097C56C300C8DAD4 /* Alpha */,
+				F6C4E788097C575D00C8DAD4 /* Beta */,
+				F6C4E789097C575D00C8DAD4 /* Ship */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FFB35F6D171DAC16004F20CF /* Build configuration list for PBXNativeTarget "auexamin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFB35F6E171DAC16004F20CF /* Debug */,
+				FFB35F6F171DAC16004F20CF /* DebugOpt */,
+				FFB35F70171DAC16004F20CF /* Alpha */,
+				FFB35F71171DAC16004F20CF /* Beta */,
+				FFB35F72171DAC16004F20CF /* Ship */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+}

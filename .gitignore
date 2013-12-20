@@ -1,0 +1,10 @@
+project.xcworkspace/
+xcuserdata/
+*.opensdf
+*.sdf
+Debug/
+*.suo
+*.DS_Store
+ipch/
+*.user
+vstsdk2.4/
