@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		FF053D7E1725A386005BC6E9 /* gmock-gtest-all.cc in Sources */ = {isa = PBXBuildFile; fileRef = FF053D7D1725A386005BC6E9 /* gmock-gtest-all.cc */; };
+		FF70294D1898775E000E9B42 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF70294C1898775E000E9B42 /* libstdc++.dylib */; };
+		FF70294F18987764000E9B42 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF70294E18987764000E9B42 /* libc++.dylib */; };
+		FF7029511898776C000E9B42 /* crt1.o in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7029501898776C000E9B42 /* crt1.o */; };
 		FFB35F73171DAC54004F20CF /* AudioUnitUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 217C11C5153638E700454CB2 /* AudioUnitUtils.cpp */; };
 		FFB35F74171DAC54004F20CF /* CPPAutoReleasePool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 217C13461536617A00454CB2 /* CPPAutoReleasePool.mm */; };
 		FFB35F75171DAC54004F20CF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21F2F5530A1C0217002862AB /* main.cpp */; };
@@ -61,6 +64,9 @@
 		FF053D7D1725A386005BC6E9 /* gmock-gtest-all.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "gmock-gtest-all.cc"; path = "third_party/gmock-gtest/gmock-gtest-all.cc"; sourceTree = SOURCE_ROOT; };
 		FF053D801725A3BE005BC6E9 /* gmock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gmock.h; sourceTree = "<group>"; };
 		FF053D821725A3BE005BC6E9 /* gtest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gtest.h; sourceTree = "<group>"; };
+		FF70294C1898775E000E9B42 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		FF70294E18987764000E9B42 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		FF7029501898776C000E9B42 /* crt1.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = crt1.o; path = usr/lib/crt1.o; sourceTree = SDKROOT; };
 		FFB35F61171DA68C004F20CF /* MotuTargetFlags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MotuTargetFlags.h; sourceTree = "<group>"; };
 		FFB35F62171DA68C004F20CF /* optional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = optional.h; sourceTree = "<group>"; };
 		FFB35F67171DAC16004F20CF /* auexamin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = auexamin; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF70294D1898775E000E9B42 /* libstdc++.dylib in Frameworks */,
 				FFB35F7A171DAC79004F20CF /* System.framework in Frameworks */,
 				FFB35F7B171DAC79004F20CF /* Carbon.framework in Frameworks */,
 				FFB35F7C171DAC79004F20CF /* AudioToolbox.framework in Frameworks */,
@@ -80,6 +87,8 @@
 				FFB35F80171DAC7C004F20CF /* CoreServices.framework in Frameworks */,
 				FFB35F81171DAC7C004F20CF /* CoreAudio.framework in Frameworks */,
 				FFB35F7D171DAC79004F20CF /* AudioUnit.framework in Frameworks */,
+				FF70294F18987764000E9B42 /* libc++.dylib in Frameworks */,
+				FF7029511898776C000E9B42 /* crt1.o in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +98,9 @@
 		089C166AFE841209C02AAC07 /* TrimPlugin */ = {
 			isa = PBXGroup;
 			children = (
+				FF7029501898776C000E9B42 /* crt1.o */,
+				FF70294E18987764000E9B42 /* libc++.dylib */,
+				FF70294C1898775E000E9B42 /* libstdc++.dylib */,
 				08FB77ADFE841716C02AAC07 /* Source */,
 				089C1671FE841209C02AAC07 /* External Frameworks and Libraries */,
 				19C28FB4FE9D528D11CA2CBB /* Products */,
@@ -250,6 +262,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = "third_party/gmock-gtest/";
+				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACOSX_DEPLOYMENT_TARGET = "";
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = "";
@@ -262,6 +275,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = "third_party/gmock-gtest/";
+				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACOSX_DEPLOYMENT_TARGET = "";
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = "";
@@ -274,6 +288,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = "third_party/gmock-gtest/";
+				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACOSX_DEPLOYMENT_TARGET = "";
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = "";
@@ -286,6 +301,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = "third_party/gmock-gtest/";
+				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACOSX_DEPLOYMENT_TARGET = "";
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = "";
@@ -298,6 +314,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = "third_party/gmock-gtest/";
+				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACOSX_DEPLOYMENT_TARGET = "";
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = "";
