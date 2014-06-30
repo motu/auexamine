@@ -27,10 +27,11 @@
 
 ****************************************************************************/
 
+#include <AudioUnit/AudioUnit.h>
 #include <string>
 struct ComponentDescription;
 
-bool IsBlackListed( const ComponentDescription& cd, const std::string& name, bool& masDuplicate );
-bool IsWhiteListed(  const ComponentDescription& cd );
+bool IsBlackListed( const AudioComponentDescription& cd, const std::string& name, bool& masDuplicate );
+bool IsWhiteListed(  const AudioComponentDescription& cd );
 
 #endif // _AUVAL_EXCEPTIONLIST_H_

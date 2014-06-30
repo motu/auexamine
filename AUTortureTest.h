@@ -11,7 +11,7 @@
 
 namespace AudioUnits
 {
-    void SetupTest(ComponentDescription cd);
+    void SetupTest(AudioComponentDescription cd);
     bool IsAuthorized();
 }
 

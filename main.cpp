@@ -68,7 +68,7 @@ int main( int argc, char** argv)
 
  	bool charMode = false;
 
-	ComponentDescription cd;
+	AudioComponentDescription cd;
 	cd.componentFlags = 0;
 	cd.componentFlagsMask = 0;
 

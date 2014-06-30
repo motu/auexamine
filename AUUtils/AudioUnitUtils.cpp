@@ -73,7 +73,7 @@ void SetProperty( AudioUnit ci, AudioUnitPropertyID  inID, AudioUnitScope scope,
 }
 
 //--------------------------------
-Base::Base( const ComponentDescription& desc ) :
+Base::Base( const AudioComponentDescription& desc ) :
     fComponentDesc(desc),
     fIsInitialized(false),
     fSupportsPrioritizedMIDI(false),
@@ -84,14 +84,14 @@ Base::Base( const ComponentDescription& desc ) :
 {
     DCL_AU_FUNC(Base::Base)
 
-    Component auComp;
-    ComponentDescription nonConst = desc;
-    auComp = FindNextComponent (NULL, &nonConst);
+    AudioComponent auComp;
+    AudioComponentDescription nonConst = desc;
+    auComp = AudioComponentFindNext (NULL, &nonConst);
     if ( auComp == NULL )
 		FailAudioUnitError( kAudioUnitErr_FailedInitialization, AU_DESC );
 
     AudioUnit newAudioUnit;
-	FailAudioUnitError( OpenAComponent (auComp, &newAudioUnit), AU_DESC );
+	FailAudioUnitError( AudioComponentInstanceNew (auComp, &newAudioUnit), AU_DESC );
 
 	if ( newAudioUnit  == NULL )
 		FailAudioUnitError( kAudioUnitErr_FailedInitialization, AU_DESC );
@@ -676,11 +676,11 @@ void	Base::setRealtimeHint( bool realtime )
 GUIInfo
 Base::getGUIInfo()
 {
-    std::vector<ComponentDescription> carbonDescs = getCarbonUIComponentList();
-    optional<ComponentDescription> carbonDesc;
+    std::vector<AudioComponentDescription> carbonDescs = getCarbonUIComponentList();
+    optional<AudioComponentDescription> carbonDesc;
     bool carbonDescWasGeneric = true;
 
-	for ( const ComponentDescription& c : carbonDescs)
+	for ( const AudioComponentDescription& c : carbonDescs)
 	{
 		if ( c.componentSubType != 'gnrc' )
 		{
@@ -725,25 +725,25 @@ Base::getCocoaUIInfo()
 	return nullptr;
 }
 
-std::vector<ComponentDescription> Base::getCarbonUIComponentList()
+std::vector<AudioComponentDescription> Base::getCarbonUIComponentList()
 {
 	DCL_AU_FUNC(getUIComponentList)
 
  	UInt32 dataSize;
 	Boolean writable;
-	std::vector<ComponentDescription> ret;
+	std::vector<AudioComponentDescription> ret;
 
 	if ( GetGlobalPropertyInfo( fCi,  kAudioUnitProperty_GetUIComponentList, dataSize, writable) )
 	{
-		int32_t num =  dataSize / sizeof( ComponentDescription );
-		std::vector<ComponentDescription> buffer( num );
+		int32_t num =  dataSize / sizeof( AudioComponentDescription );
+		std::vector<AudioComponentDescription> buffer( num );
 		GetGlobalProperty( fCi, kAudioUnitProperty_GetUIComponentList, buffer.data(), dataSize, AU_DESC );
 		ret = std::move(buffer);
 	}
 
 	if ( ret.size() == 0 )
 	{
-		ComponentDescription genericDesc;
+		AudioComponentDescription genericDesc;
 
 		genericDesc.componentType = kAudioUnitCarbonViewComponentType;
 		genericDesc.componentSubType = 'gnrc';
@@ -943,17 +943,17 @@ void Base::render( AudioUnitRenderActionFlags& ioActionFlags,
 namespace
 {
 
-bool HasValidName( const ComponentDescription& desc )
+bool HasValidName( const AudioComponentDescription& desc )
 {
 	optional<UTF8ComponentInfo> info = GetUTF8ComponentInfo( desc );
 	return info.hasValue() and (info->name.length() > 5);
 }
 
-void AddComponentsToVector( std::vector<ComponentDescription>& vec, uint32_t component_type  )
+void AddComponentsToVector( std::vector<AudioComponentDescription>& vec, uint32_t component_type  )
 {
 	int mNumUnits = 0;
 
-	ComponentDescription	cd2;
+	AudioComponentDescription	cd2;
 
  	cd2.componentType = component_type;
 	cd2.componentFlags = 0;
@@ -961,38 +961,38 @@ void AddComponentsToVector( std::vector<ComponentDescription>& vec, uint32_t com
 	cd2.componentSubType = 0;
 	cd2.componentManufacturer = 0;
 
-	Component comp = NULL;
+	AudioComponent comp = NULL;
 
 	// find all the v2 effect AUs
- 	comp = FindNextComponent (NULL, &cd2);
+ 	comp = AudioComponentFindNext (NULL, &cd2);
 	while (comp != NULL)
 	{
-		ComponentDescription desc;
-		GetComponentInfo (comp, &desc, NULL, NULL, NULL);
+		AudioComponentDescription desc;
+		AudioComponentGetDescription (comp, &desc);
 		if ( HasValidName( desc ) )
 			vec.push_back( desc );
 
-		comp = FindNextComponent (comp, &cd2);
+		comp = AudioComponentFindNext (comp, &cd2);
 	}
 }
 } // unnamed namespace
-std::vector<ComponentDescription> GetEffectList()
+std::vector<AudioComponentDescription> GetEffectList()
 {
-	std::vector<ComponentDescription> ret;
+	std::vector<AudioComponentDescription> ret;
 	AddComponentsToVector( ret, kAudioUnitType_Effect );
 	AddComponentsToVector( ret, kAudioUnitType_MusicEffect );
 	return ret;
 }
 
-std::vector<ComponentDescription> GetSynthList()
+std::vector<AudioComponentDescription> GetSynthList()
 {
-	std::vector<ComponentDescription> ret;
+	std::vector<AudioComponentDescription> ret;
 	AddComponentsToVector( ret, kAudioUnitType_MusicDevice );
 	return ret;
 }
-std::vector<ComponentDescription> GetCompleteList()
+std::vector<AudioComponentDescription> GetCompleteList()
 {
-	std::vector<ComponentDescription> ret;
+	std::vector<AudioComponentDescription> ret;
 	AddComponentsToVector( ret, kAudioUnitType_Effect );
 	AddComponentsToVector( ret, kAudioUnitType_MusicEffect );
 	AddComponentsToVector( ret, kAudioUnitType_MusicDevice );
@@ -1016,103 +1016,44 @@ void FailAudioUnitError( int32_t error, const FuncDesc& desc, bool* negOneErrorC
 	}
 }
 
-optional<UTF8ComponentInfo> GetUTF8ComponentInfo( const ComponentDescription& desc )
+optional<UTF8ComponentInfo> GetUTF8ComponentInfo( const AudioComponentDescription& desc )
 {
-    Component				auComp;
-    ComponentDescription cd = desc;
-    auComp = FindNextComponent (NULL, &cd);
-	bool gotIt = false;
-	if ( auComp )
-	{
-		Handle nameH = NewHandle(10);
-		Handle infoH = NewHandle(10);
+    AudioComponent auComp = AudioComponentFindNext (NULL, &desc);
 
-		if ( ::GetComponentInfo (auComp, &cd, nameH, infoH, NULL ) == noErr )
-		{
-            UTF8ComponentInfo info;
-            info.name = handleToUTF8Str(nameH);
-            info.info = handleToUTF8Str(infoH);
-            return info;
-		}
-		DisposeHandle( nameH );
-		DisposeHandle( infoH );
-	}
-	return nullptr;
+	if ( !auComp )
+        return nullptr;
+    
+    UTF8ComponentInfo info;
+    
+    ScopedCFTypeRef<CFStringRef> name;
+    CFStringRef rawName;
+    
+    if(AudioComponentCopyName(auComp, &rawName) != noErr)
+        return nullptr;
+    
+    name.reset(rawName); // adopt the cfstringref
+
+    std::vector<char> cStringBuffer(CFStringGetLength(name.get()) * 6 + 1);
+    if(not CFStringGetCString(name.get(), cStringBuffer.data(), cStringBuffer.size(), kCFStringEncodingUTF8))
+        return nullptr;
+
+    // convert to c++ string
+    info.name = cStringBuffer.data();
+
+	return info;
 }
 
-int32_t GetComponentVersion( const ComponentDescription& desc )
+optional<uint32_t> GetComponentVersion( const AudioComponentDescription& desc )
 {
-    ComponentDescription cd = desc;
-	bool versionFound = false;
-	short curRes = CurResFile();
-	ResFileRefNum componentResFileID = kResFileNotOpened;
-	long retVal = 0;
-
-	try
-	{
-    	Component auComp = FindNextComponent (NULL, &cd);
-		if ( auComp )
-		{
- 			// invalid resource ID, abort
-			if ( (OpenAComponentResFile( auComp, &componentResFileID) != noErr) or (componentResFileID <= 0) )
-				throw 1;
-
-			UseResFile(componentResFileID);
-
-			short thngResourceCount = Count1Resources(kComponentResourceType);
-
-			// only go on if we successfully found at least 1 thng resource
-			if ( (ResError() != noErr) or (thngResourceCount <= 0) )
-				throw 1;
-
-			// loop through all of the Component thng resources trying to
-			// find one that matches this Component description
-			for (short i = 0; i < thngResourceCount and (not versionFound); i++)
-			{
-				// try to get a handle to this code resource
-				Handle thngResourceHandle = Get1IndResource(kComponentResourceType, i+1);
-				if (thngResourceHandle != NULL  )
-				{
-					if (*thngResourceHandle != NULL and GetHandleSize(thngResourceHandle) >= sizeof(ExtComponentResource))
-					{
-						ExtComponentResource * componentThng = (ExtComponentResource*) (*thngResourceHandle);
-
-						// check to see if this is the thng resource for the particular Component that we are looking at
-						// (there often is more than one Component described in the resource)
-						if ( AudioUnits::cd_equal( componentThng->cd, desc) )
-						{
-							retVal = componentThng->componentVersion;
-							versionFound = true;
-						}
-
-						ReleaseResource(thngResourceHandle);
-					}
-				}
-			}
-		}
-	}
-	catch(...)
-	{
-	}
-
-	UseResFile(curRes);	// revert
-
-	if ( componentResFileID != kResFileNotOpened )
-		CloseComponentResFile(componentResFileID);
-
-	if ( not versionFound )
-	{
-		try
-		{
-			std::auto_ptr<AudioUnits::Base> audioUnit( new AudioUnits::Base( desc ) );
-			return audioUnit->getComponentVersion();
-		}
-		catch(...)
-		{
-		}
-	}
-
-	return retVal;
+    AudioComponent auComp = AudioComponentFindNext (NULL, &desc);
+    if( !auComp )
+        return nullptr;
+    
+    UInt32 version = 0;
+    if(AudioComponentGetVersion(auComp, &version) != noErr)
+        return nullptr;
+    
+    return version;
 }
 
 CFURLRef Base::getMIDIXMLDoc()
@@ -1282,7 +1223,7 @@ namespace
     }
 }
 
-AudioUnits::PropertyList::PropertyList( char* buffer, int32_t len, const ComponentDescription& cd  )
+AudioUnits::PropertyList::PropertyList( char* buffer, int32_t len, const AudioComponentDescription& cd  )
 {
 	CFMutableDictionaryRef mutableRef = CFDictionaryCreateMutable( kCFAllocatorDefault, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks );
 	CFDataRef dataRef = CFDataCreate( kCFAllocatorDefault, (unsigned char*)buffer, len );
@@ -1302,10 +1243,10 @@ AudioUnits::PropertyList::PropertyList( char* buffer, int32_t len, const Compone
 	fDictionary = mutableRef;
 }
 
-optional<ComponentDescription>
+optional<AudioComponentDescription>
 AudioUnits::PropertyList::getComponentDescriptionFromPreset( CFDictionaryRef dict)
 {
-    ComponentDescription d;
+    AudioComponentDescription d;
 	bool worked = GetNumFromDictionary ( dict, kTypeString, d.componentType ) and
         GetNumFromDictionary ( dict, kSubtypeString, d.componentSubType ) and
 		GetNumFromDictionary ( dict, kManufacturerString, d.componentManufacturer );
@@ -1508,7 +1449,7 @@ void PropertyList::drizzleDataMember()
 #endif
 }
 
-bool cd_equal( const ComponentDescription& a, const ComponentDescription& b )
+bool cd_equal( const AudioComponentDescription& a, const AudioComponentDescription& b )
 {
 	return	a.componentType == b.componentType and
 				a.componentSubType == b.componentSubType and

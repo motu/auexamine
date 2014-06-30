@@ -24,7 +24,7 @@ namespace
     class InitializedAudioUnit : public AudioUnits::Base
     {
         public:
-            InitializedAudioUnit(ComponentDescription d) :
+            InitializedAudioUnit(AudioComponentDescription d) :
                 AudioUnits::Base(move(d)),
                 wasInitialized(false)
             {
@@ -51,7 +51,7 @@ namespace
     class Globals : public ::testing::Environment
     {
         public:
-            Globals(ComponentDescription cd) :
+            Globals(AudioComponentDescription cd) :
                 cd(std::move(cd)),
                 unauthorized(false)
             {}
@@ -59,7 +59,9 @@ namespace
             void SetUp()
             {
                 // force "requires init" if it's a non-apple version one component.
-                if ( (not gRequiresInit) and AudioUnits::GetComponentVersion(cd) == 1 && cd.componentManufacturer != 'appl')
+                auto version = AudioUnits::GetComponentVersion(cd);
+
+                if ( (not gRequiresInit) and (version.hasValue()) and *version == 1 and cd.componentManufacturer != 'appl')
                     gRequiresInit = true;
 
                 audioUnit.reset(new InitializedAudioUnit(cd));
@@ -71,7 +73,7 @@ namespace
                 audioUnit.reset();
             }
         
-            ComponentDescription cd;
+            AudioComponentDescription cd;
             bool unauthorized;
             shared_ptr<InitializedAudioUnit> audioUnit;
     };
@@ -122,7 +124,7 @@ namespace
         {}
 
     protected:
-        ComponentDescription& cd;
+        AudioComponentDescription& cd;
         shared_ptr<InitializedAudioUnit>& audioUnit;
     };
 
@@ -622,7 +624,7 @@ namespace
 
 namespace AudioUnits
 {
-    void SetupTest(ComponentDescription cd)
+    void SetupTest(AudioComponentDescription cd)
     {
         globals = new Globals(std::move(cd));
         // transfer ownership to gtest (we no longer control lifetime)

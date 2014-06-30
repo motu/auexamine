@@ -34,10 +34,10 @@
 
 struct AU_Ref
 {
-	ComponentDescription fDesc;
+	AudioComponentDescription fDesc;
 
 	AU_Ref(){}
-	AU_Ref(const ComponentDescription& desc ):
+	AU_Ref(const AudioComponentDescription& desc ):
 		fDesc(desc) {}
 	AU_Ref( int32_t auType, int32_t auSubT, int32_t auManu )
 	{
@@ -92,7 +92,7 @@ typedef sorted_vector_map< AU_Ref, ValidState > ExceptionList;
 
 static const ExceptionList& getExceptionList();
 
-bool IsBlackListed( const ComponentDescription& cd, const std::string& name, bool& masDuplicate )
+bool IsBlackListed( const AudioComponentDescription& cd, const std::string& name, bool& masDuplicate )
 {
 	masDuplicate = false;
 	//if ( cd.componentManufacturer == 'ksWV' )
@@ -101,8 +101,12 @@ bool IsBlackListed( const ComponentDescription& cd, const std::string& name, boo
 	//	return true;
 	//}
 
+    auto version = AudioUnits::GetComponentVersion(cd);
+    if(not version.hasValue())
+        return true;
+
 	// we allow Apple AUs that have a -1 version. This is their internal debug vers
-	if ( cd.componentManufacturer == 1634758764 and  AudioUnits::GetComponentVersion( cd ) == -1)
+	if ( cd.componentManufacturer == 1634758764 and (version.hasValue()) and *version == -1)
 		return false;
 
 	char tempStr[500];
@@ -117,7 +121,7 @@ bool IsBlackListed( const ComponentDescription& cd, const std::string& name, boo
 			isInvalid = true;
 			masDuplicate = true;
 		}
-		else if ( vs.valid == kVersionsLTorEQ_Invalid && (AudioUnits::GetComponentVersion( cd ) <= vs.componentVersion) )
+		else if ( vs.valid == kVersionsLTorEQ_Invalid && (*version <= vs.componentVersion) )
 			isInvalid = true;
 
 		if ( isInvalid )
@@ -133,7 +137,7 @@ bool IsBlackListed( const ComponentDescription& cd, const std::string& name, boo
 	return false;
 }
 
-bool IsWhiteListed(  const ComponentDescription& cd  )
+bool IsWhiteListed(  const AudioComponentDescription& cd  )
 {
 	char tempStr[500];
 	const ExceptionList& excptList = getExceptionList();

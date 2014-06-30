@@ -54,7 +54,7 @@ class Base;
 struct GUIInfo
 {
     optional<CocoaUIInfo> getCocoa() {return fCocoa;}
-    optional<ComponentDescription> getCarbon() {return fCarbon;}
+    optional<AudioComponentDescription> getCarbon() {return fCarbon;}
 
     bool useCocoa( bool hostIsCocoa ) const
 	{
@@ -68,13 +68,13 @@ struct GUIInfo
 
 private:
     // this can only be created by "base".
-   	GUIInfo(optional<CocoaUIInfo> cocoa, optional<ComponentDescription> carbon, bool genericCarbon)
+   	GUIInfo(optional<CocoaUIInfo> cocoa, optional<AudioComponentDescription> carbon, bool genericCarbon)
         : fCocoa(cocoa), fCarbon(carbon), fGeneric(genericCarbon) {}
 
 	friend class Base;
 
     optional<CocoaUIInfo> fCocoa;
-    optional<ComponentDescription> fCarbon;
+    optional<AudioComponentDescription> fCarbon;
     bool fGeneric;
 };
 
@@ -83,7 +83,7 @@ class PropertyList;
 class Base
 {
 public:
-    Base(const ComponentDescription& desc);
+    Base(const AudioComponentDescription& desc);
 
 	virtual ~Base();
 	void SetHostInfo( CFStringRef host, const AUNumVersion& version );
@@ -134,7 +134,7 @@ public:
 	GUIInfo getGUIInfo();
  	optional<CocoaUIInfo> getCocoaUIInfo();
 
-	std::vector<ComponentDescription> getCarbonUIComponentList();
+	std::vector<AudioComponentDescription> getCarbonUIComponentList();
 
 	std::vector<AudioUnitOtherPluginDesc> getReplacementList();
 
@@ -163,7 +163,7 @@ public:
   					uint32_t inNumberFrames,
   					AudioBufferList* ioData);
 
-  	const ComponentDescription& getComponentDescription()
+  	const AudioComponentDescription& getComponentDescription()
   		{ return fComponentDesc; }
 
   	AudioUnit getInternalAudioUnit() { return fCi; }
@@ -219,7 +219,7 @@ protected:
 	AudioUnit fCi;
 	bool fIsInitialized;
 	bool fSupportsPrioritizedMIDI;
- 	ComponentDescription fComponentDesc;
+ 	AudioComponentDescription fComponentDesc;
 	AUEventListenerRef fParamListenerRef;
 
 #if SUPPORT_AU_VERSION_1
@@ -244,12 +244,12 @@ struct UTF8ComponentInfo
     std::string info;
 };
 
-optional<UTF8ComponentInfo> GetUTF8ComponentInfo( const ComponentDescription& desc );
-int32_t GetComponentVersion( const ComponentDescription& desc );
+optional<UTF8ComponentInfo> GetUTF8ComponentInfo( const AudioComponentDescription& desc );
+optional<uint32_t> GetComponentVersion( const AudioComponentDescription& desc );
 
-std::vector<ComponentDescription> GetEffectList();
-std::vector<ComponentDescription> GetSynthList();
-std::vector<ComponentDescription> GetCompleteList();
+std::vector<AudioComponentDescription> GetEffectList();
+std::vector<AudioComponentDescription> GetSynthList();
+std::vector<AudioComponentDescription> GetCompleteList();
 
 struct FuncDesc
 {
@@ -275,7 +275,7 @@ public:
 	PropertyList( const PropertyList& propList );
 	PropertyList( CFPropertyListRef pl );
 	PropertyList( CFDictionaryRef dict );
-	PropertyList( char* buffer, int32_t len, const ComponentDescription& cd );
+	PropertyList( char* buffer, int32_t len, const AudioComponentDescription& cd );
 	~PropertyList();
 
 	int32_t	getVersion();
@@ -289,7 +289,7 @@ public:
 		return dict;
 	}
 
-	static optional<ComponentDescription> getComponentDescriptionFromPreset( CFDictionaryRef dict );
+	static optional<AudioComponentDescription> getComponentDescriptionFromPreset( CFDictionaryRef dict );
 private:
 	CFPropertyListRef	getPropList() const { return (CFPropertyListRef)fDictionary; }
 	void drizzleDataMember();
@@ -297,7 +297,7 @@ private:
 	friend class Base;
 };
 
-bool cd_equal( const ComponentDescription& a, const ComponentDescription& b );
+bool cd_equal( const AudioComponentDescription& a, const AudioComponentDescription& b );
 
 } // AudioUnits namespace
 
