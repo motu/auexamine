@@ -158,7 +158,7 @@ Base::~Base()
 	if ( fParamListenerRef != NULL )
 		AUListenerDispose( fParamListenerRef );
 
-	CloseComponent( fCi );
+	AudioComponentInstanceDispose( fCi );
 	fCi = NULL;
 }
 //---------
