@@ -250,15 +250,17 @@ namespace
         for ( const AudioUnitParameterID& id : ids)
         {
             char nameStr[100];
+            nameStr[0] = 0; // starts off blank.
+            
             AudioUnitParameterInfo info;
             info.cfNameString = NULL;
             audioUnit->getParameterInfo( kAudioUnitScope_Global, id, info );
-     
-            if ( info.flags & kAudioUnitParameterFlag_HasCFNameString )
+
+            if (( info.flags & kAudioUnitParameterFlag_HasCFNameString ) and (info.cfNameString != nullptr))
             {
                 CFStringGetCString( info.cfNameString, nameStr, 99,  kCFStringEncodingUTF8 );
             }
-            else
+            else if (info.name != nullptr)
             {
                 strcpy( nameStr, info.name );
             }
@@ -289,6 +291,7 @@ namespace
         }
         if ( numBlank > 0 )
         {
+            // maybe this is bad?
         }
     END_AUTEST
     
