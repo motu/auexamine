@@ -31,10 +31,18 @@ extern bool gRequiresInit;
 namespace {
 uint32_t charStrToLong( const char* str )
 {
-	uint32_t retVal = str[0];
-	retVal = (retVal << 8) | str[1];
-	retVal = (retVal << 8) | str[2];
-	retVal = (retVal << 8) | str[3];
+	uint32_t retVal = 0;
+    uint32_t len = strlen(str);
+    if(len >= 4)
+        len = 4;
+    
+    for(int i = 0; i < len; ++i)
+        retVal = (retVal << 8) | str[i];
+
+    // space-pad
+    for(int i = len; i < 4; ++i)
+        retVal = (retVal << 8) | ' ';
+    
 	return retVal;
 }
 uint32_t str2Long( const char* str )
