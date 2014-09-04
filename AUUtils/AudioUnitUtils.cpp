@@ -1008,6 +1008,7 @@ void FailAudioUnitError( int32_t error, const FuncDesc& desc, bool* negOneErrorC
 
 		char errorStr[500];
 		sprintf( errorStr, "Failure: %s %d %d", desc.name, desc.line, error );
+        throw std::runtime_error(errorStr);
 	}
 	else
 	{
